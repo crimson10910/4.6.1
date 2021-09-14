@@ -1,0 +1,53 @@
+#include <iostream>
+#include<cmath>
+#define k2 k * k
+using namespace std;
+
+int main()
+{
+	int s = 0;
+	double n, k = 1, summa = 0;
+
+	do
+	{
+		cout << "Vvedite chisla s kalviaturi \n1 Dlya N \n2 Dlya E" << endl;
+		cin >> s;
+	} while (s <= 0 || s > 2);					// Как можо сделать защиту внутри двух конструкций, не прибегая к третей?
+												// Как влияет на быстродействие тернарная усл. операция всравнении с if конструкцией
+	switch (s)
+	{
+	case 1: {
+		do
+		{
+			cout << "Vvedite N ";
+			cin >> n;
+		} while (n <= 0);
+
+		for (int i = 0; i < n; i++, k++)
+		{
+			summa += (k + 1) / ((k2 + 2) * k2);		// Почему не работает в подобной формуле pow и как его заставить работать
+		}
+		cout << "summa N(" << n << ") chlenov = " << summa;
+		return 0;
+	}
+		  //n~E
+	case	2: {
+		do					
+		{
+			cout << "Vvedite E ";
+			cin >> n;
+
+		} while (n <= 0 || n > 2 / 3.);
+		for (summa = 1; n < summa; k++)
+		{
+			summa = (k + 1) / ((k2 + 2) * k2);
+			if (summa >= n)						// Как избавиться от этого костыля и сделать так, чтобы for не проходил лишний цикл?
+			{
+				cout << "E chislo "<< k <<" = " << abs(summa) << endl;
+			}
+		}
+		return 0;
+	}
+	}
+		
+}
