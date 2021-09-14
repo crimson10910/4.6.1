@@ -1,0 +1,53 @@
+#include <iostream>
+#include<cmath>
+#define k2 k * k
+using namespace std;
+
+int main()
+{
+	int s = 0, k = 1;
+	double n, summa = 0, r = 2.1;
+
+	cout << r << endl;
+
+	do
+	{
+		cout << "Vvedite chisla s kalviaturi \n1 Dlya N \n2 Dlya E\n" << endl;
+		cin >> s;
+	} while (s <= 0 || s > 2 );		// Как сделать защиту от чисел с плавающей точкой не прибегая к if конструкции внутри двух циклов? Можно ли в таком случае использовать 
+									// тернарны условный оператор?
+	switch (s)
+	{
+	case 1: {
+		do
+		{
+			cout << "Vvedite N ";
+			cin >> n;
+		} while (n < 1);
+
+		for (; k < n + 1; k++)
+		{
+			summa += (k + 1) / ((k2 + 2) * k2);				// Почему не работает pow?
+		}
+		cout << "summa N("<<n<<") chlenov = " << summa;
+		break;
+	}
+		  // E~n
+	case	2: {
+		do
+		{
+			cout << "Vvedite E ";
+			cin >> n;
+			
+		} while (n <= 0 || n > 2 / 3.);			//     e <= 0 || e > 2/3.0
+
+		do
+		{
+			summa = (k + 1) / ((k2 + 2) * k2);
+			cout << "E chleno = " << abs(summa) << endl;
+			k++;
+		} while (summa >= n);
+
+	}
+	}
+	return 0;
