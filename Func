@@ -1,0 +1,20 @@
+#include <iostream>
+#include<cmath>
+#define k2 k * k
+using namespace std;
+
+int main()
+{
+	double n, k=1, sum = 0, a;
+	do
+	{
+		cout << "Vvedite N ";
+		cin >> n;
+	} while (n<0);
+
+	for (int i = 0; i < n; i++, k++)
+	{
+		sum += (k + 1) / ((k2 + 2) * k2);
+	}
+	cout << "Summa N chlenov = " << sum;
+}
